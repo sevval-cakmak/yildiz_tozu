@@ -1,0 +1,316 @@
+[
+  {
+    "model": "music.song",
+    "pk": 1,
+    "fields": {
+      "title": "Anlasana",
+      "artist": "İlhan İrem",
+      "spotify_url": "https://open.spotify.com/search/Anlasana%20%C4%B0lhan%20%C4%B0rem",
+      "spotify_track_id": "",
+      "emoji": "🌿",
+      "mood_tag": "nostaljik",
+      "order": 1
+    }
+  },
+  {
+    "model": "music.song",
+    "pk": 2,
+    "fields": {
+      "title": "Beni Al",
+      "artist": "Pinhani",
+      "spotify_url": "https://open.spotify.com/search/Beni%20Al%20Pinhani",
+      "spotify_track_id": "",
+      "emoji": "💜",
+      "mood_tag": "duygusal",
+      "order": 2
+    }
+  },
+  {
+    "model": "music.song",
+    "pk": 3,
+    "fields": {
+      "title": "Ah Bu Ben",
+      "artist": "Mazhar Alanson",
+      "spotify_url": "https://open.spotify.com/search/Ah%20Bu%20Ben%20Mazhar%20Alanson",
+      "spotify_track_id": "",
+      "emoji": "✨",
+      "mood_tag": "derin",
+      "order": 3
+    }
+  },
+  {
+    "model": "music.song",
+    "pk": 4,
+    "fields": {
+      "title": "Olamasa da Olur",
+      "artist": "Yalın",
+      "spotify_url": "https://open.spotify.com/search/Olamasa%20da%20Olur%20Yal%C4%B1n",
+      "spotify_track_id": "",
+      "emoji": "🍂",
+      "mood_tag": "hüzünlü",
+      "order": 4
+    }
+  },
+  {
+    "model": "music.song",
+    "pk": 5,
+    "fields": {
+      "title": "Disfruto",
+      "artist": "Carla Morrison",
+      "spotify_url": "https://open.spotify.com/search/Disfruto%20Carla%20Morrison",
+      "spotify_track_id": "",
+      "emoji": "🌸",
+      "mood_tag": "neşeli",
+      "order": 5
+    }
+  },
+  {
+    "model": "music.song",
+    "pk": 6,
+    "fields": {
+      "title": "Penthos",
+      "artist": "Yüksel Baltacı",
+      "spotify_url": "https://open.spotify.com/search/Penthos%20Y%C3%BCksel%20Balta%C4%B1",
+      "spotify_track_id": "",
+      "emoji": "🌙",
+      "mood_tag": "melankolik",
+      "order": 6
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 1,
+    "fields": {
+      "title": "Flipped",
+      "description": "Birinin seni görmesini beklerken aslında sen kendi bakışını kaybediyorsun. Küçük anların büyüklüğünü hatırlatan bir film.",
+      "poster": "movies/posters/flipped.png",
+      "year": 2010,
+      "mood_tag": "comfort movie",
+      "order": 1
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 2,
+    "fields": {
+      "title": "Amélie",
+      "description": "Küçük mucizeler peşinde, başkalarının mutluluğunu ören bir Parisli. Her sahne bir tablo gibi.",
+      "poster": "movies/posters/amelie.png",
+      "year": 2001,
+      "mood_tag": "büyülü",
+      "order": 2
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 3,
+    "fields": {
+      "title": "Harry Potter Serisi",
+      "description": "Mektup gelirse umut var. Hogwarts her yaşta ev gibi hissettiriyor, her izleyişte yeni bir şey keşfediyorum.",
+      "poster": "movies/posters/harry_potter.png",
+      "year": 2001,
+      "mood_tag": "büyülü & comfort",
+      "order": 3
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 4,
+    "fields": {
+      "title": "Tangled",
+      "description": "Fenerler yükseliyor, saçlar uçuşuyor ve özgürlük tam anlamıyla görünür oluyor. Her izleyişte kalp atıyor.",
+      "poster": "movies/posters/tangled.png",
+      "year": 2010,
+      "mood_tag": "fairy tale",
+      "order": 4
+    }
+  },
+  {
+    "model": "links.sociallink",
+    "pk": 1,
+    "fields": {
+      "name": "Spotify",
+      "url": "https://open.spotify.com/user/wpjg03ffn1f5n7irkav9oie10?si=f622ef769e2b4af7",
+      "icon_svg": "",
+      "emoji": "🎵",
+      "accent_color": "#1DB954",
+      "description": "Müzik listelerim ve favorilerim",
+      "order": 1
+    }
+  },
+  {
+    "model": "links.sociallink",
+    "pk": 2,
+    "fields": {
+      "name": "Pinterest",
+      "url": "https://pin.it/63GMHUGfs",
+      "icon_svg": "",
+      "emoji": "✿",
+      "accent_color": "#E60023",
+      "description": "İlham panom ve mood board koleksiyonum",
+      "order": 2
+    }
+  },
+  {
+    "model": "inspiration.inspirationimage",
+    "pk": 1,
+    "fields": {
+      "image": "inspiration/sonbahar.png",
+      "caption": "Sonbahar yolculuğu 🍂",
+      "pinterest_url": "https://pin.it/63GMHUGfs",
+      "order": 1
+    }
+  },
+  {
+    "model": "inspiration.inspirationimage",
+    "pk": 2,
+    "fields": {
+      "image": "inspiration/yildizlar.png",
+      "caption": "Samanyolu gecesi ✦",
+      "pinterest_url": "https://pin.it/63GMHUGfs",
+      "order": 2
+    }
+  },
+  {
+    "model": "inspiration.inspirationimage",
+    "pk": 3,
+    "fields": {
+      "image": "inspiration/fenerler.png",
+      "caption": "Peri ışıkları 🏮",
+      "pinterest_url": "https://pin.it/63GMHUGfs",
+      "order": 3
+    }
+  },
+  {
+    "model": "inspiration.inspirationimage",
+    "pk": 4,
+    "fields": {
+      "image": "inspiration/cay_kitap.png",
+      "caption": "Huzur köşesi 🍵",
+      "pinterest_url": "https://pin.it/63GMHUGfs",
+      "order": 4
+    }
+  },
+  {
+    "model": "inspiration.inspirationimage",
+    "pk": 5,
+    "fields": {
+      "image": "inspiration/botanik.png",
+      "caption": "Yeşil & lila 🌿",
+      "pinterest_url": "https://pin.it/63GMHUGfs",
+      "order": 5
+    }
+  },
+  {
+    "model": "inspiration.inspirationimage",
+    "pk": 6,
+    "fields": {
+      "image": "inspiration/sisli_orman.png",
+      "caption": "Büyülü orman sabahı 🌫️",
+      "pinterest_url": "https://pin.it/63GMHUGfs",
+      "order": 6
+    }
+  },
+  {
+    "model": "music.song",
+    "pk": 7,
+    "fields": {
+      "title": "Çoban Yıldızı",
+      "artist": "Teoman",
+      "spotify_url": "https://open.spotify.com/search/%C3%87oban%20Y%C4%B1ld%C4%B1z%C4%B1%20Teoman",
+      "spotify_track_id": "",
+      "emoji": "💫",
+      "mood_tag": "nostaljik",
+      "order": 7
+    }
+  },
+  {
+    "model": "music.song",
+    "pk": 8,
+    "fields": {
+      "title": "Siyah Gözlere",
+      "artist": "Seyyan Hanım",
+      "spotify_url": "https://open.spotify.com/search/Siyah%20G%C3%B6zlere%20Seyyan%20Han%C4%B1m",
+      "spotify_track_id": "",
+      "emoji": "📻",
+      "mood_tag": "retro",
+      "order": 8
+    }
+  },
+  {
+    "model": "music.song",
+    "pk": 9,
+    "fields": {
+      "title": "Ne Güzel Güldün",
+      "artist": "Pinhani",
+      "spotify_url": "https://open.spotify.com/search/Ne%20G%C3%BCzel%20G%C3%BCld%C3%BCn%20Pinhani",
+      "spotify_track_id": "",
+      "emoji": "💛",
+      "mood_tag": "duygusal",
+      "order": 9
+    }
+  },
+  {
+    "model": "music.song",
+    "pk": 10,
+    "fields": {
+      "title": "The Rain",
+      "artist": "The Sylvers",
+      "spotify_url": "https://open.spotify.com/search/The%20Rain%20The%20Sylvers",
+      "spotify_track_id": "",
+      "emoji": "🌧️",
+      "mood_tag": "ritmik",
+      "order": 10
+    }
+  },
+  {
+    "model": "music.song",
+    "pk": 11,
+    "fields": {
+      "title": "Seni Her Gördüğümde",
+      "artist": "Erkin Koray",
+      "spotify_url": "https://open.spotify.com/search/Seni%20Her%20G%C3%B6rd%C3%BC%C4%9F%C3%BCmde%20Erkin%20Koray",
+      "spotify_track_id": "",
+      "emoji": "⚡",
+      "mood_tag": "nostaljik",
+      "order": 11
+    }
+  },
+  {
+    "model": "music.song",
+    "pk": 13,
+    "fields": {
+      "title": "strange effect (killing eve)",
+      "artist": "Unloved",
+      "spotify_url": "https://open.spotify.com/search/Strange%20Effect%20Unloved",
+      "spotify_track_id": "",
+      "emoji": "🥀",
+      "mood_tag": "karanlık",
+      "order": 13
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 5,
+    "fields": {
+      "title": "Narnia Günlükleri",
+      "description": "Dolabın ardında keşfedilmeyi bekleyen büyülü bir dünya. Cesaret, dostluk ve macera dolu unutulmaz bir fantastik yolculuk.",
+      "poster": "movies/posters/narnia.png",
+      "year": 2005,
+      "mood_tag": "büyülü & macera",
+      "order": 5
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 6,
+    "fields": {
+      "title": "Coraline",
+      "description": "Merakla başlayan bir keşfin, gizemli ve ürkütücü bir maceraya dönüşmesini anlatan eşsiz bir stop-motion animasyon.",
+      "poster": "movies/posters/coraline.png",
+      "year": 2009,
+      "mood_tag": "gizemli",
+      "order": 6
+    }
+  }
+]

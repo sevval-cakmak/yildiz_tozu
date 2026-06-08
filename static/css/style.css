@@ -1,0 +1,1351 @@
+/* ============================================================
+   Yıldız Tozu – Ana Stil Dosyası
+   Renk Paleti: Lavanta, Frezya Moru, Adaçayı Yeşili, Krem, Altın
+   ============================================================ */
+
+/* Google Fonts – @import yerine HTML'de link kullanılıyor */
+
+/* ============================================================
+   CSS Değişkenleri (Açık Tema – Varsayılan)
+   ============================================================ */
+:root {
+  /* Ana renkler */
+  --color-bg:           #faf8f5;
+  --color-bg-alt:       #f3f0eb;
+  --color-text:         #4a4453;
+  --color-text-light:   #7a6d85;
+  --color-text-muted:   #a096ab;
+
+  /* Marka renkleri */
+  --color-lavender:     #b8a9d9;
+  --color-lavender-light: #d4c8f0;
+  --color-purple:       #9b7dbf;
+  --color-purple-dark:  #7c5fa0;
+  --color-sage:         #8fae93;
+  --color-sage-light:   #b8d4bb;
+  --color-gold:         #c9a84c;
+  --color-gold-light:   #e8d08a;
+  --color-cream:        #f7f2e8;
+
+  /* Glassmorphism */
+  --glass-bg:           rgba(255, 255, 255, 0.55);
+  --glass-bg-strong:    rgba(255, 255, 255, 0.75);
+  --glass-border:       rgba(184, 169, 217, 0.25);
+  --glass-shadow:       0 8px 32px rgba(155, 125, 191, 0.12);
+  --glass-hover-shadow: 0 16px 48px rgba(155, 125, 191, 0.22);
+
+  /* Tipografi */
+  --font-serif:         'Cormorant Garamond', Georgia, serif;
+  --font-sans:          'DM Sans', system-ui, sans-serif;
+  --font-script:        'Dancing Script', cursive;
+
+  /* Aralıklar */
+  --space-xs:  0.25rem;
+  --space-sm:  0.5rem;
+  --space-md:  1rem;
+  --space-lg:  1.5rem;
+  --space-xl:  2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 5rem;
+
+  /* Kenar yuvarlamaları */
+  --radius-sm:   8px;
+  --radius-md:   16px;
+  --radius-lg:   24px;
+  --radius-full: 9999px;
+
+  /* Geçişler */
+  --transition-fast:   150ms ease;
+  --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow:   500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Navbar yüksekliği */
+  --navbar-height: 90px;
+}
+
+/* ============================================================
+   Koyu Tema (Dark Mode)
+   ============================================================ */
+[data-theme="dark"] {
+  --color-bg:           #1a1625;
+  --color-bg-alt:       #221d30;
+  --color-text:         #e8e0f5;
+  --color-text-light:   #c0b4d4;
+  --color-text-muted:   #8a7fa0;
+
+  --glass-bg:           rgba(34, 29, 48, 0.65);
+  --glass-bg-strong:    rgba(40, 34, 58, 0.85);
+  --glass-border:       rgba(184, 169, 217, 0.15);
+  --glass-shadow:       0 8px 32px rgba(0, 0, 0, 0.35);
+  --glass-hover-shadow: 0 16px 48px rgba(155, 125, 191, 0.3);
+
+  --color-cream:        #2a2438;
+}
+
+/* ============================================================
+   Temel Reset ve Genel Stiller
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.7;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background-color var(--transition-slow), color var(--transition-slow);
+}
+
+/* Seçim rengi */
+::selection {
+  background: var(--color-lavender-light);
+  color: var(--color-purple-dark);
+}
+
+/* Kaydırma çubuğu */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-alt);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-lavender);
+  border-radius: var(--radius-full);
+}
+
+/* ============================================================
+   Tipografi
+   ============================================================ */
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  line-height: 1.2;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); }
+h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
+h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); }
+
+p { color: var(--color-text-light); }
+
+a {
+  color: var(--color-purple);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover { color: var(--color-purple-dark); }
+
+img { max-width: 100%; height: auto; display: block; }
+
+/* ============================================================
+   Yardımcı Sınıflar
+   ============================================================ */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+}
+
+.section {
+  padding: var(--space-3xl) 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.section-header h2 {
+  position: relative;
+  display: inline-block;
+  margin-bottom: var(--space-md);
+}
+
+.section-header h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-lavender), var(--color-sage));
+  margin: var(--space-sm) auto 0;
+  border-radius: var(--radius-full);
+}
+
+.section-header p {
+  font-size: 1.1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Gizlenmiş animasyon sınıfı – scroll ile tetiklenir */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   Glassmorphism Kart Bileşeni
+   ============================================================ */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  overflow: hidden;
+}
+
+.glass-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: var(--glass-hover-shadow);
+}
+
+/* ============================================================
+   Navbar
+   ============================================================ */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: var(--navbar-height);
+  background: var(--glass-bg-strong);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+  transition: background var(--transition-slow);
+}
+
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+}
+
+/* Logo ve Marka Grubu */
+.navbar-brand-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+/* Logo */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.navbar-logo-img {
+  height: 75px;
+  width: auto;
+  display: block;
+  transition: transform var(--transition-normal);
+}
+
+.navbar-logo:hover .navbar-logo-img {
+  transform: scale(1.05);
+}
+
+.navbar-author-signature {
+  font-family: var(--font-script);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--color-gold);
+  text-shadow: 0 0 8px rgba(201, 168, 76, 0.4);
+  font-style: italic;
+  white-space: nowrap;
+  letter-spacing: 0.05em;
+  animation: magical-glow 4s ease-in-out infinite alternate;
+}
+
+@keyframes magical-glow {
+  0% {
+    color: var(--color-gold);
+    text-shadow: 0 0 4px rgba(201, 168, 76, 0.3);
+  }
+  100% {
+    color: var(--color-lavender-light);
+    text-shadow: 0 0 12px rgba(212, 200, 240, 0.7), 0 0 20px rgba(155, 125, 191, 0.4);
+  }
+}
+
+/* Navigasyon linkleri */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+  list-style: none;
+}
+
+.navbar-links a {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-light);
+  letter-spacing: 0.03em;
+  padding: var(--space-xs) 0;
+  position: relative;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.navbar-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, var(--color-lavender), var(--color-sage));
+  transition: width var(--transition-normal);
+  border-radius: var(--radius-full);
+}
+
+.navbar-links a:hover {
+  color: var(--color-text);
+}
+
+.navbar-links a:hover::after,
+.navbar-links a.active::after {
+  width: 100%;
+}
+
+.navbar-links a.active {
+  color: var(--color-purple);
+}
+
+/* Navbar sağ taraf – butonlar */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+/* Ses butonu – sol anahtarı */
+.btn-sound-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.btn-sound {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.6rem;
+  line-height: 1;
+  padding: var(--space-xs);
+  border-radius: var(--radius-full);
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
+  position: relative;
+  color: var(--color-purple);
+}
+
+.btn-sound:hover {
+  transform: scale(1.2);
+  background: var(--glass-bg);
+  color: var(--color-purple-dark);
+}
+
+.btn-sound.playing {
+  animation: pulse-glow 1.5s ease-in-out infinite;
+  color: var(--color-gold);
+}
+
+/* Ses butonu küçük not yazısı */
+.btn-sound-label {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+  opacity: 0.8;
+  line-height: 1;
+  pointer-events: none;
+  font-family: var(--font-sans);
+}
+
+/* Ateş böceği parıltı animasyonu */
+@keyframes firefly-glow {
+  0%, 100% { filter: drop-shadow(0 0 3px rgba(200, 230, 100, 0.5)); opacity: 0.85; }
+  50%       { filter: drop-shadow(0 0 8px rgba(200, 230, 100, 0.95)); opacity: 1; }
+}
+
+/* Tema toggle butonu */
+.btn-theme {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  cursor: pointer;
+  font-size: 1rem;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-full);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  color: var(--color-text);
+}
+
+.btn-theme:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 12px var(--color-gold-light);
+}
+
+/* Hamburger menü (mobil) */
+.navbar-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: var(--space-xs);
+  background: none;
+  border: none;
+}
+
+.navbar-hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--color-text);
+  border-radius: 2px;
+  transition: transform var(--transition-normal), opacity var(--transition-normal);
+}
+
+/* ============================================================
+   Mobil Menü
+   ============================================================ */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: var(--navbar-height);
+  left: 0;
+  right: 0;
+  background: var(--glass-bg-strong);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+  z-index: 999;
+  padding: var(--space-lg);
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.mobile-menu.open {
+  display: flex;
+}
+
+.mobile-menu a {
+  font-size: 1.1rem;
+  color: var(--color-text);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--glass-border);
+  text-decoration: none;
+}
+
+/* ============================================================
+   Ana Sayfa – Hero Bölümü
+   ============================================================ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: calc(var(--navbar-height) + var(--space-3xl)) var(--space-xl) var(--space-3xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(184, 169, 217, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 80%, rgba(143, 174, 147, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 40% at 20% 70%, rgba(201, 168, 76, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.hero-logo-wrapper {
+  margin-bottom: var(--space-md);
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+  position: relative;
+}
+
+.hero-logo-img {
+  height: 240px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 8px 24px rgba(184, 169, 217, 0.25));
+  transition: transform var(--transition-slow);
+}
+
+.hero-logo-img:hover {
+  transform: scale(1.05) rotate(1deg);
+}
+
+.hero-eyebrow {
+  font-family: var(--font-script);
+  font-size: 1.3rem;
+  color: var(--color-lavender);
+  margin-bottom: var(--space-md);
+  opacity: 0.9;
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(3.5rem, 9vw, 7rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  background: linear-gradient(
+    135deg,
+    var(--color-purple-dark) 0%,
+    var(--color-purple) 30%,
+    var(--color-lavender) 60%,
+    var(--color-sage) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--space-sm);
+  line-height: 1;
+}
+
+.hero-subtitle {
+  font-family: var(--font-script);
+  font-size: 1.8rem;
+  color: var(--color-gold);
+  margin-bottom: var(--space-xl);
+  opacity: 0.85;
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  color: var(--color-text-light);
+  max-width: 480px;
+  margin: 0 auto var(--space-2xl);
+  line-height: 1.8;
+  font-style: italic;
+}
+
+.hero-description em {
+  font-style: normal;
+  color: var(--color-purple);
+}
+
+/* Hero decorative sparkles */
+.hero-sparkles {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.sparkle-dot {
+  position: absolute;
+  border-radius: 50%;
+  animation: twinkle var(--duration, 4s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+/* Hero butonları */
+.hero-buttons {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ============================================================
+   Buton Bileşenleri
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), background var(--transition-normal);
+  text-decoration: none;
+  border: none;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-purple), var(--color-lavender));
+  color: white;
+  box-shadow: 0 4px 20px rgba(155, 125, 191, 0.35);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 8px 30px rgba(155, 125, 191, 0.5);
+  color: white;
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(155, 125, 191, 0.4);
+}
+
+.btn-secondary {
+  background: var(--glass-bg);
+  color: var(--color-text);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(8px);
+}
+
+.btn-secondary:hover {
+  background: var(--glass-bg-strong);
+  box-shadow: 0 4px 20px rgba(155, 125, 191, 0.15);
+  color: var(--color-text);
+}
+
+.btn-sage {
+  background: linear-gradient(135deg, var(--color-sage), var(--color-sage-light));
+  color: white;
+  box-shadow: 0 4px 20px rgba(143, 174, 147, 0.35);
+}
+
+.btn-sage:hover {
+  box-shadow: 0 8px 30px rgba(143, 174, 147, 0.5);
+  color: white;
+}
+
+/* Soft glow efekti (tıklama) */
+.btn:active {
+  box-shadow: 0 0 20px var(--color-lavender-light), 0 0 40px rgba(184, 169, 217, 0.3) !important;
+}
+
+/* ============================================================
+   Hızlı Erişim Kartları (Ana Sayfa Grid)
+   ============================================================ */
+.quick-nav {
+  padding: var(--space-3xl) 0;
+}
+
+.quick-nav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-lg);
+}
+
+.quick-nav-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl) var(--space-lg);
+  text-align: center;
+  text-decoration: none;
+  color: var(--color-text);
+  box-shadow: var(--glass-shadow);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.quick-nav-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--glass-hover-shadow);
+  color: var(--color-text);
+}
+
+.quick-nav-card:hover .quick-nav-icon {
+  transform: scale(1.2);
+}
+
+.quick-nav-icon {
+  font-size: 2.5rem;
+  transition: transform var(--transition-normal);
+  display: block;
+}
+
+.quick-nav-card h3 {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.quick-nav-card p {
+  font-size: 0.85rem;
+  margin: 0;
+  opacity: 0.7;
+}
+
+/* ============================================================
+   Müzik Sayfası
+   ============================================================ */
+.music-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-lg);
+}
+
+.song-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--glass-shadow);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.song-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: var(--glass-hover-shadow);
+}
+
+.song-card-header {
+  padding: var(--space-lg) var(--space-lg) var(--space-md);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+.song-emoji {
+  font-size: 2rem;
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--glass-bg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--glass-border);
+}
+
+.song-info h3 {
+  font-size: 1.15rem;
+  margin-bottom: 2px;
+}
+
+.song-artist {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.song-mood {
+  display: inline-block;
+  margin-top: var(--space-xs);
+  font-size: 0.75rem;
+  padding: 2px 10px;
+  border-radius: var(--radius-full);
+  background: var(--color-lavender-light);
+  color: var(--color-purple-dark);
+  opacity: 0.85;
+}
+
+.song-card-embed {
+  padding: 0 var(--space-lg) var(--space-md);
+}
+
+.spotify-embed {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.song-card-footer {
+  padding: var(--space-sm) var(--space-lg) var(--space-lg);
+}
+
+/* Spotify linki yoksa göster */
+.btn-spotify {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 0.6rem 1.4rem;
+  background: linear-gradient(135deg, #1DB954, #1aa34a);
+  color: white;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.btn-spotify:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(29, 185, 84, 0.4);
+  color: white;
+}
+
+/* ============================================================
+   Filmler Sayfası
+   ============================================================ */
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-xl);
+}
+
+.movie-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--glass-shadow);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.movie-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--glass-hover-shadow);
+}
+
+.movie-poster-wrapper {
+  position: relative;
+  aspect-ratio: 2/3;
+  overflow: hidden;
+}
+
+.movie-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.movie-card:hover .movie-poster {
+  transform: scale(1.05);
+}
+
+.movie-poster-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  background: linear-gradient(135deg, var(--color-lavender-light), var(--color-sage-light));
+}
+
+.movie-mood-badge {
+  position: absolute;
+  top: var(--space-sm);
+  left: var(--space-sm);
+  font-size: 0.7rem;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(155, 125, 191, 0.85);
+  color: white;
+  backdrop-filter: blur(6px);
+}
+
+.movie-info {
+  padding: var(--space-lg);
+}
+
+.movie-info h3 {
+  font-size: 1.2rem;
+  margin-bottom: var(--space-xs);
+}
+
+.movie-year {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.movie-description {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-text-light);
+  font-style: italic;
+}
+
+/* ============================================================
+   İlham Panosu (Masonry tarzı grid)
+   ============================================================ */
+.inspiration-grid {
+  columns: 3;
+  column-gap: var(--space-lg);
+}
+
+.inspiration-item {
+  break-inside: avoid;
+  margin-bottom: var(--space-lg);
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--glass-shadow);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.inspiration-item:hover {
+  transform: scale(1.02);
+  box-shadow: var(--glass-hover-shadow);
+}
+
+.inspiration-item img {
+  width: 100%;
+  display: block;
+  border-radius: var(--radius-md);
+}
+
+.inspiration-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: var(--space-md);
+  background: linear-gradient(to top, rgba(74, 68, 83, 0.8) 0%, transparent 100%);
+  color: white;
+  font-size: 0.85rem;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+
+.inspiration-item:hover .inspiration-overlay {
+  opacity: 1;
+}
+
+/* Görsel yoksa placeholder grid */
+.inspiration-placeholder-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--space-lg);
+}
+
+.inspiration-placeholder {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl) var(--space-xl);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  min-height: 200px;
+  justify-content: center;
+}
+
+.inspiration-placeholder-icon {
+  font-size: 2.5rem;
+}
+
+.inspiration-placeholder p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+/* Pinterest bağlantı kartı */
+.pinterest-link-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  text-align: center;
+  box-shadow: var(--glass-shadow);
+  margin-bottom: var(--space-2xl);
+}
+
+/* ============================================================
+   Bağlantılar Sayfası
+   ============================================================ */
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-lg);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.link-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  text-align: center;
+  text-decoration: none;
+  color: var(--color-text);
+  box-shadow: var(--glass-shadow);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.link-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--glass-hover-shadow);
+  color: var(--color-text);
+}
+
+.link-card-icon {
+  font-size: 2.5rem;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  transition: transform var(--transition-normal);
+}
+
+.link-card:hover .link-card-icon {
+  transform: scale(1.15) rotate(-5deg);
+}
+
+.link-card h3 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.link-card p {
+  font-size: 0.9rem;
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.footer {
+  background: var(--color-bg-alt);
+  border-top: 1px solid var(--glass-border);
+  padding: var(--space-2xl) 0;
+  text-align: center;
+  margin-top: var(--space-3xl);
+}
+
+.footer-logo {
+  margin-bottom: var(--space-sm);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-logo-img {
+  height: 140px;
+  width: auto;
+  display: block;
+  transition: transform var(--transition-normal);
+}
+
+.footer-logo:hover .footer-logo-img {
+  transform: scale(1.05);
+}
+
+.footer-tagline {
+  font-family: var(--font-script);
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-lg);
+}
+
+.footer-links {
+  display: flex;
+  gap: var(--space-xl);
+  justify-content: center;
+  list-style: none;
+  margin-bottom: var(--space-lg);
+}
+
+.footer-links a {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer-links a:hover {
+  color: var(--color-lavender);
+}
+
+.footer-copyright {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+/* ============================================================
+   Yaprak Düşme Animasyonu
+   ============================================================ */
+.leaves-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.leaf {
+  position: absolute;
+  top: -50px;
+  font-size: 1.1rem;
+  opacity: 0;
+  animation: leaf-fall var(--fall-duration, 8s) linear infinite;
+  animation-delay: var(--delay, 0s);
+  left: var(--left, 50%);
+  filter: drop-shadow(0 2px 4px rgba(143, 174, 147, 0.3));
+}
+
+/* ============================================================
+   Canvas (Yıldız Parıltısı)
+   ============================================================ */
+#starfield-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.75;
+}
+
+/* İçerik z-index */
+.navbar { z-index: 1000; }
+.page-content { position: relative; z-index: 1; }
+
+/* ============================================================
+   Animasyon Keyframe'leri
+   ============================================================ */
+
+/* Yıldız parıltısı */
+@keyframes sparkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.85) rotate(20deg); }
+}
+
+/* Titreşim / canlılık */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.3); }
+}
+
+/* Nabız / glow */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(201, 168, 76, 0); }
+}
+
+/* Yaprak düşme */
+@keyframes leaf-fall {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  5% { opacity: 0.7; }
+  90% { opacity: 0.5; }
+  100% {
+    transform: translateY(110vh) translateX(var(--sway, 80px)) rotate(var(--rotate, 360deg));
+    opacity: 0;
+  }
+}
+
+/* Fade in genel */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero giriş animasyonu */
+.hero-eyebrow  { animation: fadeIn 0.8s ease forwards; }
+.hero-title    { animation: fadeIn 1s ease 0.2s both; }
+.hero-subtitle { animation: fadeIn 1s ease 0.4s both; }
+.hero-description { animation: fadeIn 1s ease 0.6s both; }
+.hero-buttons  { animation: fadeIn 1s ease 0.8s both; }
+
+/* ============================================================
+   Responsive Tasarım
+   ============================================================ */
+
+/* Tablet */
+@media (max-width: 900px) {
+  .inspiration-grid {
+    columns: 2;
+  }
+
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar-hamburger {
+    display: flex;
+  }
+}
+
+/* Mobil */
+@media (max-width: 600px) {
+  :root {
+    --space-xl: 1.25rem;
+    --space-2xl: 2rem;
+    --space-3xl: 3rem;
+  }
+
+  .container {
+    padding: 0 var(--space-md);
+  }
+
+  .hero {
+    padding-top: calc(var(--navbar-height) + var(--space-2xl));
+  }
+
+  .music-grid,
+  .movies-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .inspiration-grid {
+    columns: 1;
+  }
+
+  .links-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* ============================================================
+   Sayfa Yükleme Ekranı (Loading)
+   ============================================================ */
+.page-loader {
+  position: fixed;
+  inset: 0;
+  background: var(--color-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.page-loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-star {
+  font-size: 2rem;
+  animation: sparkle 1s ease-in-out infinite;
+}
+
+/* ============================================================
+   Özel Vurgu Detayları
+   ============================================================ */
+
+/* Floral/vine dekoratif ayırıcı */
+.divider-floral {
+  text-align: center;
+  color: var(--color-lavender);
+  font-size: 1.2rem;
+  opacity: 0.6;
+  margin: var(--space-lg) 0;
+  letter-spacing: 1rem;
+}
+
+/* Alıntı bloğu */
+.quote-block {
+  border-left: 3px solid var(--color-lavender);
+  padding-left: var(--space-lg);
+  margin: var(--space-xl) 0;
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--color-text-light);
+}
+
+/* Tag / etiket */
+.tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 3px 12px;
+  border-radius: var(--radius-full);
+  background: var(--color-lavender-light);
+  color: var(--color-purple-dark);
+  font-weight: 500;
+}
+
+[data-theme="dark"] .tag {
+  background: rgba(184, 169, 217, 0.2);
+  color: var(--color-lavender);
+}
+
+/* Boş durum mesajı */
+.empty-state {
+  text-align: center;
+  padding: var(--space-3xl) var(--space-xl);
+  color: var(--color-text-muted);
+}
+
+.empty-state-icon {
+  font-size: 3rem;
+  margin-bottom: var(--space-md);
+  opacity: 0.5;
+}
+
+.empty-state p {
+  font-style: italic;
+  max-width: 400px;
+  margin: 0 auto;
+}

@@ -1,0 +1,28 @@
+# Python ve Django için Git Yoksayma (.gitignore) Dosyası
+
+# Sanal Ortamlar (Virtual Environments)
+venv/
+.venv/
+env/
+ENV/
+ActiveState.venv
+
+# Python derleme dosyaları
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Django yerel ayarları ve hassas veriler
+.env
+local_settings.py
+
+# SQLite veritabanı (Veriler fixture içinde tutulduğu için git'e eklenmez)
+db.sqlite3
+
+# Kullanıcı tarafından yüklenen medya dosyaları
+media/
+
+# İşletim sistemi özel dosyaları
+.DS_Store
+Thumbs.db

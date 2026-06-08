@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Filmler{% endblock %}
+{% block meta_description %}Comfort filmler ve favorilerim: Flipped, Amélie, Harry Potter, Tangled.{% endblock %}
+
+{% block content %}
+
+<div class="section" style="padding-top: calc(var(--navbar-height) + var(--space-3xl));">
+  <div class="container">
+
+    <!-- Sayfa Başlığı -->
+    <header class="section-header">
+      <h1 class="fade-in-up">🎬 Filmler</h1>
+      <p class="fade-in-up" data-delay="100">
+        Comfort filmler, büyülü anlar ve tekrar izlediğim hikâyeler.
+      </p>
+      <div class="divider-floral" aria-hidden="true">✿ ❀ ✿</div>
+    </header>
+
+    <!-- Film Kartları Grid -->
+    {% if movies %}
+    <div class="movies-grid">
+      {% for movie in movies %}
+      <article class="movie-card fade-in-up" data-delay="{{ forloop.counter0|add:1 }}00" id="movie-{{ movie.pk }}">
+        
+        <!-- Afiş -->
+        <div class="movie-poster-wrapper">
+          {% if movie.poster %}
+          <img 
+            src="{{ movie.poster.url }}" 
+            alt="{{ movie.title }} film afişi"
+            class="movie-poster"
+            loading="lazy"
+          >
+          {% else %}
+          <div class="movie-poster-placeholder" aria-hidden="true">🎬</div>
+          {% endif %}
+        </div>
+
+        <!-- Film Bilgileri -->
+        <div class="movie-info">
+          <h3>{{ movie.title }}</h3>
+          {% if movie.year %}
+          <p class="movie-year">{{ movie.year }}</p>
+          {% endif %}
+          <p class="movie-description">{{ movie.description }}</p>
+        </div>
+
+      </article>
+      {% endfor %}
+    </div>
+
+    {% else %}
+    <!-- Boş Durum -->
+    <div class="empty-state">
+      <div class="empty-state-icon" aria-hidden="true">🎬</div>
+      <p>Henüz film eklenmemiş. Admin panelinden film ekleyebilirsin.</p>
+    </div>
+    {% endif %}
+
+  </div>
+</div>
+
+{% endblock %}

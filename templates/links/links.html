@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Bağlantılar{% endblock %}
+{% block meta_description %}Spotify, Pinterest ve diğer köşelerimde bul beni.{% endblock %}
+
+{% block content %}
+
+<div class="section" style="padding-top: calc(var(--navbar-height) + var(--space-3xl));">
+  <div class="container">
+
+    <!-- Sayfa Başlığı -->
+    <header class="section-header">
+      <h1 class="fade-in-up">🔗 Bağlantılar</h1>
+      <p class="fade-in-up" data-delay="100">
+        Diğer köşelerimde de bulabilirsin beni.
+      </p>
+      <div class="divider-floral" aria-hidden="true">✿ ❀ ✿</div>
+    </header>
+
+    <!-- Bağlantı Kartları -->
+    <div class="links-grid">
+      
+      {% if links %}
+        {% for link in links %}
+        <a 
+          href="{{ link.url }}" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="link-card fade-in-up" 
+          id="link-{{ link.pk }}"
+          data-delay="{{ forloop.counter0|add:1 }}00"
+          style="--card-accent: {{ link.accent_color }};"
+        >
+          <div class="link-card-icon" style="border-color: {{ link.accent_color }}40;">
+            {{ link.emoji }}
+          </div>
+          <h3>{{ link.name }}</h3>
+          {% if link.description %}
+          <p>{{ link.description }}</p>
+          {% endif %}
+        </a>
+        {% endfor %}
+
+      {% else %}
+        <!-- Sabit linkler – veritabanı boş olsa bile göster -->
+        <a 
+          href="https://open.spotify.com/user/wpjg03ffn1f5n7irkav9oie10?si=f622ef769e2b4af7" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="link-card fade-in-up"
+          id="link-spotify-static"
+        >
+          <div class="link-card-icon" style="border-color: rgba(29,185,84,0.4);">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="#1DB954" aria-hidden="true">
+              <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+            </svg>
+          </div>
+          <h3>Spotify</h3>
+          <p>Müzik listelerim ve favorilerim</p>
+        </a>
+
+        <a 
+          href="https://pin.it/63GMHUGfs" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="link-card fade-in-up"
+          id="link-pinterest-static"
+          data-delay="150"
+        >
+          <div class="link-card-icon" style="border-color: rgba(230,0,35,0.3);">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="#E60023" aria-hidden="true">
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/>
+            </svg>
+          </div>
+          <h3>Pinterest</h3>
+          <p>İlham panom ve mood board koleksiyonum</p>
+        </a>
+      {% endif %}
+
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

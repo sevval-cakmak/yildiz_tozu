@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Ana Sayfa{% endblock %}
+
+{% block content %}
+
+<!-- ============================================================
+     Hero Bölümü
+     ============================================================ -->
+<section class="hero" aria-label="Karşılama bölümü">
+  
+  <!-- Dekoratif sparkle noktaları -->
+  <div class="hero-sparkles" aria-hidden="true">
+    <span class="sparkle-dot" style="--duration:3.5s; --delay:0s; top:15%; left:10%; width:6px; height:6px; background:var(--color-lavender); opacity:0.4;"></span>
+    <span class="sparkle-dot" style="--duration:4s; --delay:1s; top:25%; left:85%; width:4px; height:4px; background:var(--color-gold); opacity:0.5;"></span>
+    <span class="sparkle-dot" style="--duration:5s; --delay:0.5s; top:70%; left:8%; width:5px; height:5px; background:var(--color-sage); opacity:0.35;"></span>
+    <span class="sparkle-dot" style="--duration:3s; --delay:2s; top:60%; left:90%; width:7px; height:7px; background:var(--color-lavender); opacity:0.3;"></span>
+    <span class="sparkle-dot" style="--duration:6s; --delay:1.5s; top:40%; left:5%; width:3px; height:3px; background:var(--color-gold); opacity:0.6;"></span>
+  </div>
+
+  <div class="hero-logo-wrapper fade-in-up" data-delay="50">
+    <img src="{% static 'logo.png' %}" alt="Yıldız Tozu Logo" class="hero-logo-img">
+  </div>
+
+  <p class="hero-eyebrow">✦ hoş geldin ✦</p>
+  
+  <p class="hero-subtitle">stardust &amp; reverie</p>
+  
+  <p class="hero-description">
+    Sevdiğim <em>müzikler</em>, filmler ve bana iyi gelen<br>
+    küçük şeylerin bir araya geldiği bir alan.
+  </p>
+
+  <div class="hero-buttons">
+    <a href="{% url 'music:list' %}" class="btn btn-primary" id="btn-muzikler">
+      🎵 Müzikler
+    </a>
+    <a href="{% url 'movies:list' %}" class="btn btn-secondary" id="btn-filmler">
+      🎬 Filmler
+    </a>
+    <a href="{% url 'inspiration:board' %}" class="btn btn-sage" id="btn-ilham">
+      ✿ İlham
+    </a>
+  </div>
+
+</section>
+
+<!-- ============================================================
+     Hızlı Erişim Kartları
+     ============================================================ -->
+<section class="quick-nav section" aria-label="Sayfa bölümleri">
+  <div class="container">
+    
+    <div class="section-header">
+      <h2>Köşeler</h2>
+      <p>Bu küçük alanda seni ne bekliyor?</p>
+    </div>
+
+    <div class="quick-nav-grid">
+      
+      <a href="{% url 'music:list' %}" class="quick-nav-card fade-in-up" id="nav-card-music">
+        <span class="quick-nav-icon" aria-hidden="true">🎵</span>
+        <h3>Müzikler</h3>
+        <p>Tekrar tekrar dinlediğim şarkılar</p>
+      </a>
+
+      <a href="{% url 'movies:list' %}" class="quick-nav-card fade-in-up" id="nav-card-movies" data-delay="100">
+        <span class="quick-nav-icon" aria-hidden="true">🎬</span>
+        <h3>Filmler</h3>
+        <p>Comfort filmler ve favoriler</p>
+      </a>
+
+      <a href="{% url 'inspiration:board' %}" class="quick-nav-card fade-in-up" id="nav-card-inspiration" data-delay="200">
+        <span class="quick-nav-icon" aria-hidden="true" style="animation: firefly-glow 2.5s ease-in-out infinite;">✿</span>
+        <h3>İlham Panosu</h3>
+        <p>Görsel mood board koleksiyonum</p>
+      </a>
+
+      <a href="{% url 'links:page' %}" class="quick-nav-card fade-in-up" id="nav-card-links" data-delay="300">
+        <span class="quick-nav-icon" aria-hidden="true">🔗</span>
+        <h3>Bağlantılar</h3>
+        <p>Diğer köşelerimde bul beni</p>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     Alıntı Bölümü
+     ============================================================ -->
+<section class="section" aria-label="İlham alıntısı">
+  <div class="container">
+    <div class="quote-block fade-in-up" style="max-width: 600px; margin: 0 auto;">
+      "Güzellik küçük şeylerdedir; bazen bir şarkı,<br>
+      bazen bir film sahnesi, bazen sadece bir ışık."
+    </div>
+  </div>
+</section>
+
+{% endblock %}

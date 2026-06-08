@@ -1,0 +1,146 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Etiketleri -->
+  <title>{% block title %}Yıldız Tozu{% endblock %} | Kişisel Estetik Blog</title>
+  <meta name="description" content="{% block meta_description %}Sevdiğim müzikler, filmler ve bana iyi gelen küçük şeylerin bir araya geldiği sessiz, estetik bir alan.{% endblock %}">
+  <meta name="author" content="Yıldız Tozu">
+  <meta name="theme-color" content="#b8a9d9">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="{% block og_title %}Yıldız Tozu{% endblock %}">
+  <meta property="og:description" content="Sessiz, estetik, hafif büyülü bir köşe.">
+  <meta property="og:type" content="website">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- Ana CSS -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+  <!-- Sayfa yükleme ekranı -->
+  <div class="page-loader" id="page-loader" aria-hidden="true">
+    <span class="loader-star">✦</span>
+  </div>
+
+  <!-- Arka plan katmanları -->
+  <canvas id="starfield-canvas" aria-hidden="true"></canvas>
+  <div class="leaves-container" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       Navigasyon Çubuğu
+       ============================================================ -->
+  <nav class="navbar" role="navigation" aria-label="Ana menü">
+    <div class="navbar-inner">
+      
+      <!-- Logo ve İmza -->
+      <div class="navbar-brand-group">
+        <a href="{% url 'core:home' %}" class="navbar-logo" aria-label="Yıldız Tozu ana sayfa">
+          <img src="{% static 'logo.png' %}" alt="Yıldız Tozu Logo" class="navbar-logo-img">
+        </a>
+        <span class="navbar-author-signature">Şevval Çakmak</span>
+      </div>
+
+      <!-- Masaüstü Navigasyon -->
+      <ul class="navbar-links" role="list">
+        <li><a href="{% url 'core:home' %}">Ana Sayfa</a></li>
+        <li><a href="{% url 'music:list' %}">Müzikler</a></li>
+        <li><a href="{% url 'movies:list' %}">Filmler</a></li>
+        <li><a href="{% url 'inspiration:board' %}">İlham</a></li>
+        <li><a href="{% url 'links:page' %}">Bağlantılar</a></li>
+      </ul>
+
+      <!-- Sağ taraf butonlar -->
+      <div class="navbar-actions">
+        <!-- Ambient Ses Butonu + Sol Anahtarı -->
+        <div class="btn-sound-wrapper">
+          <button 
+            class="btn-sound" 
+            id="btn-sound" 
+            aria-label="Melodiyi dinle"
+            title="Melodiyi dinlemek için tıklayın"
+          >𝄞</button>
+          <span class="btn-sound-label">melodiyi dinlemek için tıklayın</span>
+        </div>
+        
+        <!-- Dark/Light Mode -->
+        <button 
+          class="btn-theme" 
+          id="btn-theme" 
+          aria-label="Temayı değiştir"
+        >🌙</button>
+
+        <!-- Mobil Hamburger -->
+        <button 
+          class="navbar-hamburger" 
+          id="hamburger-btn"
+          aria-label="Menüyü aç/kapat" 
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobil Menü -->
+  <div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobil menü">
+    <a href="{% url 'core:home' %}">🏠 Ana Sayfa</a>
+    <a href="{% url 'music:list' %}">🎵 Müzikler</a>
+    <a href="{% url 'movies:list' %}">🎬 Filmler</a>
+    <a href="{% url 'inspiration:board' %}">✿ İlham Panosu</a>
+    <a href="{% url 'links:page' %}">🔗 Bağlantılar</a>
+  </div>
+
+  <!-- ============================================================
+       Ana İçerik
+       ============================================================ -->
+  <main class="page-content" id="main-content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- ============================================================
+       Footer
+       ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-logo">
+        <img src="{% static 'logo.png' %}" alt="Yıldız Tozu Logo" class="footer-logo-img">
+      </div>
+      <p class="footer-tagline">hoş geldiniz, umarım bu sayfayı seversiniz 🌿</p>
+      
+      <ul class="footer-links" role="list">
+        <li><a href="{% url 'core:home' %}">Ana Sayfa</a></li>
+        <li><a href="{% url 'music:list' %}">Müzikler</a></li>
+        <li><a href="{% url 'movies:list' %}">Filmler</a></li>
+        <li><a href="{% url 'inspiration:board' %}">İlham</a></li>
+        <li><a href="{% url 'links:page' %}">Bağlantılar</a></li>
+      </ul>
+      
+      <div class="divider-floral" aria-hidden="true">✿ ❀ ✿</div>
+      <p class="footer-copyright">
+        &copy; 2026 Yıldız Tozu &nbsp;·&nbsp; Sevgiyle yapıldı ✦
+      </p>
+    </div>
+  </footer>
+
+  <!-- JavaScript Dosyaları -->
+  <script src="{% static 'js/animations.js' %}" defer></script>
+  <script src="{% static 'js/audio.js' %}" defer></script>
+  
+  {% block extra_js %}{% endblock %}
+</body>
+</html>
