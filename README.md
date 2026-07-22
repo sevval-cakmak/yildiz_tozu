@@ -2,38 +2,42 @@
 
 ## 🇹🇷 Türkçe
 
-Yıldız Tozu, ilham veren içerikleri, sevdiğim müzikleri, filmleri, kitapları ve kişisel notları sade bir tasarımla bir araya getiren kişisel bir web projesidir. Minimalist tasarımı ve kullanıcı dostu arayüzüyle dijital bir yaşam alanı sunmayı amaçlamaktadır.
+Yıldız Tozu, Django ile geliştirdiğim kişisel bir web projesidir. Sevdiğim müzikleri, filmleri, kitapları ve bana ilham veren içerikleri sade ve modern bir arayüzde bir araya getirmeyi amaçlamaktadır.
 
 ### Özellikler
 
-- Modern ve minimalist arayüz
+- Minimalist kullanıcı arayüzü
 - Responsive tasarım
 - Kişisel içerik sayfaları
-- Temiz ve kullanıcı odaklı deneyim
+- Dinamik içerik yönetimi
 
 ### Teknolojiler
 
-- Next.js
-- React
-- TypeScript
-- Tailwind CSS
+- Django
+- Python
+- HTML
+- CSS
+- JavaScript
+- SQLite
 
 ---
 
 ## 🇬🇧 English
 
-Yıldız Tozu is a personal website designed to bring together my favorite music, movies, books, and personal content in a clean and minimalist interface.
+Yıldız Tozu is a personal website built with Django, designed to showcase my favorite music, movies, books, and other inspiring content through a clean and modern interface.
 
 ### Features
 
-- Modern and minimalist design
-- Responsive interface
+- Minimalist user interface
+- Responsive design
 - Personal content pages
-- Clean user experience
+- Dynamic content management
 
 ### Technologies
 
-- Next.js
-- React
-- TypeScript
-- Tailwind CSS
+- Django
+- Python
+- HTML
+- CSS
+- JavaScript
+- SQLite
